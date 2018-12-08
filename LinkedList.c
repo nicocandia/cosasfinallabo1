@@ -652,8 +652,7 @@ int ll_map (LinkedList* this,void (*pFunc)(void*))
     return retorno;
 }
 
-/*
-LinkedList* ll_filterVersion2(LinkedList*this,int (*pFunc)(void*,int entero),int numero)
+LinkedList* ll_filterConvalor(LinkedList*this,int (*pFunc)(void*,void*),void* valor)
 {
     int i;
     LinkedList*newList=NULL;
@@ -666,14 +665,14 @@ LinkedList* ll_filterVersion2(LinkedList*this,int (*pFunc)(void*,int entero),int
         for(i=0;i<len;i++)
         {
             pElement=ll_get(this,i);
-            if(pFunc(pElement,numero)>0)
+            if(pFunc(pElement,valor)>0)
             {
                 ll_add(newList,pElement);
             }
         }
     }
     return newList;
-}*/
+}
 
 /** \brief almacena en un acumulador el retorno de la funcion pasada como parametro
  *
@@ -700,3 +699,17 @@ int ll_count (LinkedList* this,int (*fn)(void*element))
     return acumulador;
 }
 
+int ll_mapConvalor (LinkedList* this,void (*pFunc)(void*,void*),void* valor)
+{
+    int retorno=-1;
+    if(this != NULL && pFunc != NULL)
+    {
+        while(this->nodeIterator !=NULL)
+        {
+            pFunc(this->nodeIterator->pElement,valor);
+            ll_getNextIterator(this);
+            retorno=0;
+        }
+    }
+    return retorno;
+}

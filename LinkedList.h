@@ -58,3 +58,5 @@ int ll_map(LinkedList* this, void (*pFunc)(void*));
 void ll_startIterator(LinkedList* this);
 void ll_getNextIterator(LinkedList* this);
 int ll_count (LinkedList* this,int (*fn)(void*element));
+LinkedList* ll_filterConvalor(LinkedList*this,int (*pFunc)(void*,void*),void* valor);
+int ll_mapConvalor (LinkedList* this,void (*pFunc)(void*,void*),void* valor);
