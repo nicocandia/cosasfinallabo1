@@ -701,3 +701,21 @@ int ll_count (LinkedList* this,int (*fn)(void*element))
     return acumulador;
 }
 
+void* ll_filterVersion2(LinkedList*this,int (*pFunc)(void*,void*),void* dato)
+{
+    Node* Nodo;
+    LinkedList* newList=ll_newLinkedList();
+    if(this!= NULL && pFunc != NULL && newList!=NULL){
+        Nodo=ll_startIterator(this);
+        if(Nodo!=NULL){
+            do{
+                if(pFunc(Nodo->pElement,dato)>0){
+                    ll_add(newList,Nodo->pElement);
+                }
+                Nodo=ll_getNextIterator(this);
+            }while(Nodo!=NULL);
+        }
+    }
+    return newList;
+}
+
