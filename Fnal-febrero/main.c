@@ -10,7 +10,7 @@ int main()
 {
    int opcion;
    char zona[128];
-    LinkedList*listaEnvios=ll_newLinkedList();
+    LinkedList*=ll_newLinkedList();
     LinkedList*listaPorzona=ll_newLinkedList();
 
     printf("\n <<<<<<BIENVENIDO>>>>>>\n");
